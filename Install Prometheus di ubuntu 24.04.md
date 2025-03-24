@@ -50,6 +50,10 @@ sudo mv prometheus promtool /usr/local/bin/
           - targets: ["localhost:9090"]
    
    ```
+   setelah menambahkan job lakukan restar service prometheusnya dengan perintah
+   ```
+   sudo systemctl restart prometheus
+   ```
 10. agar service prometheus berjalan di belakang layar maka perlu di buatkan servicenya dan diconfigurasi
    ```
    sudo nano /etc/systemd/system/prometheus.service
