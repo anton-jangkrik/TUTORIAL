@@ -87,7 +87,7 @@ untuk ngecek prometheus berjalan di port berapa bisa ketikan perintah berikut
 sudo lsof -n -i | grep prometheus
 ```
 
-## INSTALL NODE_EXPORTER
+## INSTALL NODE_EXPORTER DISERVER CLIENT
 1. Download Node_Exporter versi terbaru
 - [Download Node_Exporter](https://prometheus.io/download/#node_exporter)
 ```
@@ -97,4 +97,42 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.9.0/node_e
 ```
 tar xvf node_exporter-1.9.0.linux-amd64.tar.gz node_exporter-1.9.0.linux-amd64/
 ```
-3. 
+3. Sebelum install node exporter buat user terlebih dahulu dengan nama "prometheus"
+```
+sudo groupadd --system prometheus
+sudo useradd --system -s /sbin/nologin -g prometheus prometheus
+```
+5. Pindah ke folder node exporter
+```
+cd node_exporter-1.9.0.linux-amd64/
+```
+6. pindahkan file node exporter ke folder biar jadi bisa dijalankan di belakang layar``` /usr/local/bin/```
+```
+sudo mv node_exporter /usr/local/bin/
+```
+7. buatkan service daemon agar bisa berjalan di belakang sistem
+```
+sudo nano /etc/systemd/system/node-expoter.service
+```
+isikan code berikut
+```yml
+    [Unit]
+    Description=Prometheus Exporter for machine metrics
+
+    [Service]
+    User=prometheus
+    Group=prometheus
+    ExecStart=/usr/local/bin/node_exporter
+    ExecReload=/bin/kill -HUP $MAINPID
+    Restart=always
+    TimeoutStopSec=20s
+    SendSIGKILL=no
+
+    [Install]
+    WantedBy=multi-user.target
+```
+8. kemudian configurasi service nya agar bisa otomatis berjalan dan reload systemd nya
+```
+sudo systemctl enable --now node-expoter.service 
+sudo systemctl status node-expoter.service 
+```
