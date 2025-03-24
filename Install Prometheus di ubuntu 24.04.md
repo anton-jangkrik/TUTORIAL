@@ -154,4 +154,9 @@ Periksa Status Firewall:
 ```
 sudo ufw status
 ```
+## Catatan Keamanan:
+Port 9100 terbuka untuk publik. Jika ini tidak diinginkan, batasi akses hanya dari IP tertentu dengan:
+```
+sudo ufw allow from <IP_PROMETHEUS> to any port 9100 proto tcp
+```
 # Selamat mencoba!!!!!!!!!!!!
