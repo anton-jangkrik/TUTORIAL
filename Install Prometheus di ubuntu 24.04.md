@@ -8,21 +8,27 @@ wget https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheu
 ```
 tar xvf prometheus-3.2.1.linux-amd64.tar.gz prometheus-3.2.1.linux-amd64/
 ```
-3. Pindah ke direktory prometheus
-```
-cd prometheus-3.2.1.linux-amd64
-```
 3. Sebelum install prometheus buat user terlebih dahulu dengan nama "prometheus"
 ```
 sudo groupadd --system prometheus
 sudo useradd --system -s /sbin/nologin -g prometheus prometheus
 ```
-4. Pindahkan file prometheus dan promtool
-```
-sudo mv prometheus promtool /usr/local/bin/
-```
-5. buat folder di /etc/ dan di /var/ untuk menyimpan pengaturan serta data prometheus
+4.  buat folder di /etc/ dan di /var/ untuk menyimpan pengaturan serta data prometheus
 ```
 sudo mkdir /etc/prometheus
 sudo mkdir /var/lib/prometheus
 ```
+5. Pindah ke direktory prometheus
+```
+cd prometheus-3.2.1.linux-amd64
+```
+6. Pindahkan file prometheus dan promtool
+```
+sudo mv prometheus.yml /etc/prometheus/
+sudo mv prometheus promtool /usr/local/bin/
+```
+6. Rubah hak akase folder ke user prometheus
+  ```
+sudo chown -R prometheus:prometheus /var/lib/prometheus/
+```
+8. 
