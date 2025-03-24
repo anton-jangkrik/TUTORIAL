@@ -32,6 +32,48 @@ sudo mv prometheus promtool /usr/local/bin/
   ```
 sudo chown -R prometheus:prometheus /var/lib/prometheus/
 ```
+8. agar service prometheus berjalan di belakang layar maka perlu di buatkan servicenya dan diconfigurasi
+   ```
+   sudo nano /etc/systemd/system/prometheus.service
+   ```
+   code
+   ```
+   [Unit]
+
+Description=Prometheus
+
+Wants=network-online.target
+
+After=network-online.target
+
+
+
+[Service]
+
+User=prometheus
+
+Group=prometheus
+
+ExecStart=/usr/local/bin/prometheus \
+
+--config.file=/etc/prometheus/prometheus.yml \
+
+--storage.tsdb.path=/var/lib/prometheus \
+
+--web.console.templates=/etc/prometheus/consoles \
+
+--web.console.libraries=/etc/prometheus/console_libraries
+
+Restart=always
+
+
+
+[Install]
+
+WantedBy=multi-user.target
+
+```
+
 
 ## INSTALL NODE_EXPORTER
 1. Download Node_Exporter versi terbaru
