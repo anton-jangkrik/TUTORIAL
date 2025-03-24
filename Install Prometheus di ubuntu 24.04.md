@@ -27,12 +27,30 @@ sudo chown -R prometheus:prometheus /var/lib/prometheus/
 ```
 cd prometheus-3.2.1.linux-amd64
 ```
-6. Pindahkan file prometheus dan promtool ke direktory ```/usr/local/bin/``` dan file prometheus.yml ke direktory ```/etc/prometheus/``` sesuai yang sudah kita buat tadi
+7. Pindahkan file prometheus dan promtool ke direktory ```/usr/local/bin/``` dan file prometheus.yml ke direktory ```/etc/prometheus/``` sesuai yang sudah kita buat tadi
 ```
 sudo mv prometheus.yml /etc/prometheus/
 sudo mv prometheus promtool /usr/local/bin/
 ```
-8. agar service prometheus berjalan di belakang layar maka perlu di buatkan servicenya dan diconfigurasi
+8. untuk mengedit prometheus.yml agar bisa membaca data metricnya.
+   ```
+   cd /etc/prometheus/
+   sudo nano prometheus.yml
+   ```
+   code contoh, sesuaikan dengan anda
+   ```yml
+    global:
+      scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+      evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+    
+    scrape_configs:
+      # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+      - job_name: "prometheus"
+        static_configs:
+          - targets: ["localhost:9090"]
+   
+   ```
+10. agar service prometheus berjalan di belakang layar maka perlu di buatkan servicenya dan diconfigurasi
    ```
    sudo nano /etc/systemd/system/prometheus.service
    ```
@@ -56,14 +74,14 @@ sudo mv prometheus promtool /usr/local/bin/
     [Install]
     WantedBy=multi-user.target
    ```
-9. reload service systemd nya
+11. reload service systemd nya
     ```
     sudo systemctl daemon-reload
     sudo systemctl status prometheus
     sudo systemctl enable --now prometheus
 
     ```
-11. Prometheus dapat di akses langsung di alamat ip local servernya, untuk melihat brp ip servernya bisa dengan ketik ```hostname -I ``` kemudian buka di browser ip tersebut dan tambahkan port prometheus yaitu default ```9090```
+12. Prometheus dapat di akses langsung di alamat ip local servernya, untuk melihat brp ip servernya bisa dengan ketik ```hostname -I ``` kemudian buka di browser ip tersebut dan tambahkan port prometheus yaitu default ```9090```
 
 
 ## INSTALL NODE_EXPORTER
