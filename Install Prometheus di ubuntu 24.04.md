@@ -37,42 +37,25 @@ sudo chown -R prometheus:prometheus /var/lib/prometheus/
    sudo nano /etc/systemd/system/prometheus.service
    ```
    code
-   ```
+   ```txt
    [Unit]
-
-Description=Prometheus
-
-Wants=network-online.target
-
-After=network-online.target
-
-
-
-[Service]
-
-User=prometheus
-
-Group=prometheus
-
-ExecStart=/usr/local/bin/prometheus \
-
---config.file=/etc/prometheus/prometheus.yml \
-
---storage.tsdb.path=/var/lib/prometheus \
-
---web.console.templates=/etc/prometheus/consoles \
-
---web.console.libraries=/etc/prometheus/console_libraries
-
-Restart=always
-
-
-
-[Install]
-
-WantedBy=multi-user.target
-
-```
+    Description=Prometheus
+    Wants=network-online.target
+    After=network-online.target
+    
+    [Service]
+    User=prometheus
+    Group=prometheus
+    ExecStart=/usr/local/bin/prometheus \
+    --config.file=/etc/prometheus/prometheus.yml \
+    --storage.tsdb.path=/var/lib/prometheus \
+    --web.console.templates=/etc/prometheus/consoles \
+    --web.console.libraries=/etc/prometheus/console_libraries
+    Restart=always
+    
+    [Install]
+    WantedBy=multi-user.target
+   ```
 
 
 ## INSTALL NODE_EXPORTER
