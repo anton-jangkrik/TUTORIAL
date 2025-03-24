@@ -55,7 +55,7 @@ sudo mv prometheus promtool /usr/local/bin/
    sudo nano /etc/systemd/system/prometheus.service
    ```
    code
-   ```txt
+   ```yml
     [Unit]
     Description=Prometheus
     Wants=network-online.target
