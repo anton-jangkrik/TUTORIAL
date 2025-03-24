@@ -53,6 +53,7 @@ sudo mv prometheus promtool /usr/local/bin/
    setelah menambahkan job lakukan restar service prometheusnya dengan perintah
    ```
    sudo systemctl restart prometheus
+   sudo systemctl status prometheus
    ```
 10. agar service prometheus berjalan di belakang layar maka perlu di buatkan servicenya dan diconfigurasi
    ```
@@ -116,7 +117,7 @@ sudo mv node_exporter /usr/local/bin/
 ```
 7. buatkan service daemon agar bisa berjalan di belakang sistem
 ```
-sudo nano /etc/systemd/system/node-expoter.service
+sudo nano /etc/systemd/system/node-exporter.service
 ```
 isikan code berikut
 ```yml
@@ -124,11 +125,10 @@ isikan code berikut
 Description=Prometheus Exporter for machine metrics
 
 [Service]
+Restart=always
 User=prometheus
-Group=prometheus
 ExecStart=/usr/local/bin/node_exporter
 ExecReload=/bin/kill -HUP $MAINPID
-Restart=always
 TimeoutStopSec=20s
 SendSIGKILL=no
 
@@ -138,10 +138,20 @@ WantedBy=multi-user.target
 8. kemudian configurasi service nya agar bisa otomatis berjalan dan reload systemd nya
 ```
 sudo systemctl enable --now node-expoter.service 
-sudo systemctl status node-expoter.service 
+sudo systemctl status node-exporter.service 
 ```
 9.untuk ngecek node exporter berjalan di port berapa bisa ketikan perintah berikut
 ```
 sudo lsof -n -i | grep node
+```
+# (Opsional) Konfigurasi Firewall
+Jika Anda menggunakan firewall (ufw), pastikan port 9100 terbuka:
+Buka Port 9100:
+```
+sudo ufw allow 9100/tcp
+```
+Periksa Status Firewall:
+```
+sudo ufw status
 ```
 # Selamat mencoba!!!!!!!!!!!!
