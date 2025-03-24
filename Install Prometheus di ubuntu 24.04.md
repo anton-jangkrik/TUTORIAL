@@ -38,7 +38,7 @@ sudo chown -R prometheus:prometheus /var/lib/prometheus/
    ```
    code
    ```txt
-   [Unit]
+    [Unit]
     Description=Prometheus
     Wants=network-online.target
     After=network-online.target
