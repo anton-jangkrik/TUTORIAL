@@ -82,7 +82,10 @@ sudo mv prometheus promtool /usr/local/bin/
 
     ```
 12. Prometheus dapat di akses langsung di alamat ip local servernya, untuk melihat brp ip servernya bisa dengan ketik ```hostname -I ``` kemudian buka di browser ip tersebut dan tambahkan port prometheus yaitu default ```9090```
-
+untuk ngecek prometheus berjalan di port berapa bisa ketikan perintah berikut
+```
+sudo lsof -n -i | grep prometheus
+```
 
 ## INSTALL NODE_EXPORTER
 1. Download Node_Exporter versi terbaru
