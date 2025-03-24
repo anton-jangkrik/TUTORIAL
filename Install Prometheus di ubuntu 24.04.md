@@ -1,4 +1,5 @@
 # langkah install prometheus di ubuntu 24.04
+## INSTALL PROMETHEUS
 1. Download prometheus versi terbaru
 - [Download Prometheus](https://prometheus.io/download/)
 ```
@@ -27,8 +28,18 @@ cd prometheus-3.2.1.linux-amd64
 sudo mv prometheus.yml /etc/prometheus/
 sudo mv prometheus promtool /usr/local/bin/
 ```
-6. Rubah hak akase folder ke user prometheus
+7. Rubah hak akase folder ke user prometheus
   ```
 sudo chown -R prometheus:prometheus /var/lib/prometheus/
 ```
-8. 
+
+## INSTALL NODE_EXPORTER
+1. Download Node_Exporter versi terbaru
+- [Download Node_Exporter](https://prometheus.io/download/#node_exporter)
+```
+wget https://github.com/prometheus/node_exporter/releases/download/v1.9.0/node_exporter-1.9.0.linux-amd64.tar.gz
+```
+2. Extrak file Node_Exporter di server
+```
+tar xvf node_exporter-1.9.0.linux-amd64.tar.gz node_exporter-1.9.0.linux-amd64/
+```
