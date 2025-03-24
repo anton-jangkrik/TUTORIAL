@@ -1,5 +1,5 @@
 ## langkah install prometheus di ubuntu 24.04
-1 Dounload prometheus
+1 Download prometheus di sini
 ```
 wget https://github.com/prometheus/prometheus/releases/download/v3.2.1/prometheus-3.2.1.linux-amd64.tar.gz
 ```
