@@ -19,18 +19,18 @@ sudo useradd --system -s /sbin/nologin -g prometheus prometheus
 sudo mkdir /etc/prometheus
 sudo mkdir /var/lib/prometheus
 ```
-5. Pindah ke direktory prometheus
+5. Rubah hak akase folder ke user prometheus
+  ```
+sudo chown -R prometheus:prometheus /var/lib/prometheus/
+```
+6. Pindah ke direktory prometheus
 ```
 cd prometheus-3.2.1.linux-amd64
 ```
-6. Pindahkan file prometheus dan promtool
+6. Pindahkan file prometheus dan promtool ke direktory ```/usr/local/bin/``` dan file prometheus.yml ke direktory ```/etc/prometheus/``` sesuai yang sudah kita buat tadi
 ```
 sudo mv prometheus.yml /etc/prometheus/
 sudo mv prometheus promtool /usr/local/bin/
-```
-7. Rubah hak akase folder ke user prometheus
-  ```
-sudo chown -R prometheus:prometheus /var/lib/prometheus/
 ```
 8. agar service prometheus berjalan di belakang layar maka perlu di buatkan servicenya dan diconfigurasi
    ```
