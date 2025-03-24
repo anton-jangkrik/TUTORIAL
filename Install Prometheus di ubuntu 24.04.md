@@ -56,23 +56,23 @@ sudo mv prometheus promtool /usr/local/bin/
    ```
    code
    ```yml
-    [Unit]
-    Description=Prometheus
-    Wants=network-online.target
-    After=network-online.target
+[Unit]
+Description=Prometheus
+Wants=network-online.target
+After=network-online.target
     
-    [Service]
-    User=prometheus
-    Group=prometheus
-    ExecStart=/usr/local/bin/prometheus \
-    --config.file=/etc/prometheus/prometheus.yml \
-    --storage.tsdb.path=/var/lib/prometheus \
-    --web.console.templates=/etc/prometheus/consoles \
-    --web.console.libraries=/etc/prometheus/console_libraries
-    Restart=always
-    
-    [Install]
-    WantedBy=multi-user.target
+[Service]
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/prometheus \
+--config.file=/etc/prometheus/prometheus.yml \
+--storage.tsdb.path=/var/lib/prometheus \
+--web.console.templates=/etc/prometheus/consoles \
+--web.console.libraries=/etc/prometheus/console_libraries
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
    ```
 11. reload service systemd nya
     ```
@@ -116,20 +116,20 @@ sudo nano /etc/systemd/system/node-expoter.service
 ```
 isikan code berikut
 ```yml
-    [Unit]
-    Description=Prometheus Exporter for machine metrics
+[Unit]
+Description=Prometheus Exporter for machine metrics
 
-    [Service]
-    User=prometheus
-    Group=prometheus
-    ExecStart=/usr/local/bin/node_exporter
-    ExecReload=/bin/kill -HUP $MAINPID
-    Restart=always
-    TimeoutStopSec=20s
-    SendSIGKILL=no
+[Service]
+User=prometheus
+Group=prometheus
+ExecStart=/usr/local/bin/node_exporter
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+TimeoutStopSec=20s
+SendSIGKILL=no
 
-    [Install]
-    WantedBy=multi-user.target
+[Install]
+WantedBy=multi-user.target
 ```
 8. kemudian configurasi service nya agar bisa otomatis berjalan dan reload systemd nya
 ```
