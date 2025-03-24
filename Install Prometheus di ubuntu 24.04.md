@@ -136,4 +136,8 @@ WantedBy=multi-user.target
 sudo systemctl enable --now node-expoter.service 
 sudo systemctl status node-expoter.service 
 ```
+9.untuk ngecek node exporter berjalan di port berapa bisa ketikan perintah berikut
+```
+sudo lsof -n -i | grep node
+```
 # Selamat mencoba!!!!!!!!!!!!
