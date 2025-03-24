@@ -56,6 +56,14 @@ sudo chown -R prometheus:prometheus /var/lib/prometheus/
     [Install]
     WantedBy=multi-user.target
    ```
+9. reload service systemd nya
+    ```
+    sudo systemctl daemon-reload
+    sudo systemctl status prometheus
+    sudo systemctl enable --now prometheus
+
+    ```
+11. Prometheus dapat di akses langsung di alamat ip local servernya, untuk melihat brp ip servernya bisa dengan ketik ```hostname -I ``` kemudian buka di browser ip tersebut dan tambahkan port prometheus yaitu default ```9090```
 
 
 ## INSTALL NODE_EXPORTER
