@@ -5,9 +5,7 @@
 
 - [Docker Install documentation](https://docs.docker.com/install/)
 - [Docker-Compose Install documentation](https://docs.docker.com/compose/install/)
-  ```txt
-  anton
-  ```
+
 2. Create a docker-compose.yml file similar to this:
 
 ```yml
