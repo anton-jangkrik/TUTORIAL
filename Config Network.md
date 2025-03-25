@@ -18,20 +18,6 @@ network:
             -   to: default
                 via: 172.16.7.254
     version: 2
-
-version: 2
-network:
-    ethernets:
-        ens18:
-            addresses:
-            - 172.16.7.50/16
-            nameservers:
-                addresses:
-                - 172.16.7.254
-                search: []
-            routes:
-            -   to: default
-                via: 172.16.7.254
 ```
 
 
@@ -49,4 +35,4 @@ newgrp docker
 groups
 ```
 Output harus menampilkan docker dalam daftar grup.
-ini berlaku juga untuk user yang lain, tinggal gantu user docker ke user yang di inginkan dalam server
+ini berlaku juga untuk user yang lain, tinggal ganti user docker ke user yang di inginkan dalam server
