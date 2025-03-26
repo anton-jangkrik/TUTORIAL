@@ -159,4 +159,10 @@ Port 9100 terbuka untuk publik. Jika ini tidak diinginkan, batasi akses hanya da
 ```
 sudo ufw allow from <IP_PROMETHEUS> to any port 9100 proto tcp
 ```
+# Jalankan Node Exporter dengan Docker (Alternatif)
+Jika Anda lebih nyaman dengan Docker, jalankan Node Exporter sebagai container:
+```
+docker run -d --name node-exporter -p 9200:9100 prom/node-exporter
+```
+
 # Selamat mencoba!!!!!!!!!!!!
