@@ -27,3 +27,7 @@ sudo apt install docker-ce -y
 ```
 sudo systemctl status docker
 ```
+
+# mengatasi error socket
+
+[https://www.youtube.com/watch?v=jX5UYznr5Xs]
