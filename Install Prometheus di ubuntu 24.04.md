@@ -137,7 +137,7 @@ WantedBy=multi-user.target
 ```
 8. kemudian configurasi service nya agar bisa otomatis berjalan dan reload systemd nya
 ```
-sudo systemctl enable --now node-expoter.service 
+sudo systemctl enable --now node-exporter.service 
 sudo systemctl status node-exporter.service 
 ```
 9.untuk ngecek node exporter berjalan di port berapa bisa ketikan perintah berikut
